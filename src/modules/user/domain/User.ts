@@ -1,22 +1,21 @@
 import { BaseEntity } from '@core/domain/BaseEntity';
-import { City } from '@modules/city/entities';
+import { City } from '@modules/city/domain';
 
 import { CreateUserDTO } from '../dtos/CreateUser';
 
 enum genre_type {
-  MALE = 'male',
-  FEMALE = 'female',
+  MALE = 'MALE',
+  FEMALE = 'FEMALE',
 }
 
 class User extends BaseEntity {
   name: string;
   genre: genre_type;
   birth_date: Date;
-  city_id: string;
-  city: City;
+  city_id?: string;
+  city?: City;
 
-  public static create = (data: CreateUserDTO): User =>
-    Object.assign(new User(), data);
+  public static create = (data: User): User => Object.assign(new User(), data);
 }
 
 export { User, genre_type };
