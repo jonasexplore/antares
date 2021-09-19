@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Genre {
+  MALE
+  FEMALE
+}
+
+model City {
+  id         String   @id @default(uuid())
+  is_active  Boolean  @default(true)
+  name       String   @unique
+  state      String
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+
+  @@map("cities")
+  User User[]
+}
+
+model User {
+  id         String   @id @default(uuid())
+  is_active  Boolean  @default(true)
+  name       String
+  genre      Genre
+  birth_date DateTime
+  city_id    String
+  city       City     @relation(fields: [city_id], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+
+  @@map("users")
+}
