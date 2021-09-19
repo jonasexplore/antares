@@ -1,11 +1,10 @@
 import 'dotenv/config';
+import { Logger } from '@shared/utils/Logger';
 
 import { app } from './app';
 
-const { API_PORT, API_PORT_EXTERNAL } = process.env;
+const PORT = process.env.PORT || 3333;
 
-app.listen(API_PORT, () => {
-  console.log(
-    `Servidor rodando! PORTA INTERNA:${API_PORT} PORTA EXTERNA: ${API_PORT_EXTERNAL}`,
-  );
+app.listen(PORT, () => {
+  Logger.info(`🚀 Server has started at http://localhost:${PORT}`);
 });
