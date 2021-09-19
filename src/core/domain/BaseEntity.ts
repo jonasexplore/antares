@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 abstract class BaseEntity {
   readonly id?: string;
 
-  is_active: boolean;
+  is_active?: boolean;
 
   readonly created_at?: Date;
 
