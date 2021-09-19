@@ -1,0 +1,1 @@
+export { interceptorError } from './interceptorError';
