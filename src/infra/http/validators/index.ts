@@ -1,0 +1,1 @@
+export { cityValidator } from './CityValidator';
