@@ -16,6 +16,11 @@ export const removed = (): HttpResponse => ({
   body: undefined,
 });
 
+export const noContent = (): HttpResponse => ({
+  statusCode: HttpStatusCodes.NO_CONTENT,
+  body: undefined,
+});
+
 export const created = <T>(dto?: T): HttpResponse => ({
   statusCode: HttpStatusCodes.CREATED,
   body: dto,
