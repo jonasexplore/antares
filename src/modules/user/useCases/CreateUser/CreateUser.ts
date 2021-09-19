@@ -1,12 +1,18 @@
+import { inject, injectable } from 'tsyringe';
+
 import { CityNotFound } from '@modules/city/errors';
-import { ICityRepository } from '@modules/city/repositories';
+import { CITY, ICityRepository } from '@modules/city/repositories';
 import { CreateUserDTO } from '@modules/user/dtos';
 import { User } from '@modules/user/entities';
-import { IUserRepository } from '@modules/user/repositories';
+import { IUserRepository, USER } from '@modules/user/repositories';
 
+@injectable()
 class CreateUser {
   constructor(
+    @inject(USER.USER_REPOSITORY)
     private readonly usersRepository: IUserRepository,
+
+    @inject(CITY.CITY_REPOSITORY)
     private readonly citiesRepository: ICityRepository,
   ) {}
 

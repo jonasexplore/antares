@@ -1,9 +1,15 @@
+import { inject, injectable } from 'tsyringe';
+
 import { ListUserDTO } from '@modules/user/dtos/ListUser';
 import { User } from '@modules/user/entities';
-import { IUserRepository } from '@modules/user/repositories';
+import { IUserRepository, USER } from '@modules/user/repositories';
 
+@injectable()
 class ListUser {
-  constructor(private readonly usersRepository: IUserRepository) {}
+  constructor(
+    @inject(USER.USER_REPOSITORY)
+    private readonly usersRepository: IUserRepository,
+  ) {}
 
   async execute({ name }: ListUserDTO): Promise<User[]> {
     if (name) {

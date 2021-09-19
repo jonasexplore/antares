@@ -1,9 +1,15 @@
+import { inject, injectable } from 'tsyringe';
+
 import { UpdateUserDTO } from '@modules/user/dtos';
 import { UserNotFound } from '@modules/user/errors';
-import { IUserRepository } from '@modules/user/repositories';
+import { IUserRepository, USER } from '@modules/user/repositories';
 
+@injectable()
 class UpdateUser {
-  constructor(private readonly usersRepository: IUserRepository) {}
+  constructor(
+    @inject(USER.USER_REPOSITORY)
+    private readonly usersRepository: IUserRepository,
+  ) {}
 
   async execute(data: UpdateUserDTO): Promise<void> {
     const userExists = await this.usersRepository.findById(data.id);
