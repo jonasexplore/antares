@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
+import { City } from '@modules/city/domain';
 import { ListCityDTO } from '@modules/city/dtos';
-import { City } from '@modules/city/entities';
 import { CITY, ICityRepository } from '@modules/city/repositories';
 
 @injectable()

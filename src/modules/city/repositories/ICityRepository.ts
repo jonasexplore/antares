@@ -1,5 +1,5 @@
+import { City } from '../domain';
 import { CreateCityDTO } from '../dtos';
-import { City } from '../entities';
 
 interface ICityRepository {
   create(data: CreateCityDTO): Promise<City>;

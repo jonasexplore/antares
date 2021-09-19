@@ -1,6 +1,7 @@
-import { genre_type } from '../entities/User';
+import { genre_type } from '../domain/User';
 
 type CreateUserDTO = {
+  id?: string;
   name: string;
   genre: genre_type;
   birth_date: Date;

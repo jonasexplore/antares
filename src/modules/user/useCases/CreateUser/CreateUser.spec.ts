@@ -1,8 +1,9 @@
+import { validate } from 'uuid';
+
 import { CityNotFound } from '@modules/city/errors';
 import { MemoryCityRepository } from '@modules/city/repositories';
-import { genre_type } from '@modules/user/entities/User';
+import { genre_type } from '@modules/user/domain/User';
 import { MemoryUserRepository } from '@modules/user/repositories';
-import { validate } from 'uuid';
 
 import { CreateUser } from '.';
 

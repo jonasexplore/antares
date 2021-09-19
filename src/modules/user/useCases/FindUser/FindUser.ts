@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { User } from '@modules/user/entities';
+import { User } from '@modules/user/domain';
 import { UserNotFound } from '@modules/user/errors';
 import { IUserRepository, USER } from '@modules/user/repositories';
 

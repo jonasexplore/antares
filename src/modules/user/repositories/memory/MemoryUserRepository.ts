@@ -1,6 +1,6 @@
 import { UpdateUserDTO } from '@modules/user/dtos';
 import { CreateUserDTO } from '@modules/user/dtos/CreateUser';
-import { User } from '@modules/user/entities';
+import { User } from '@modules/user/domain';
 
 import { IUserRepository } from '..';
 

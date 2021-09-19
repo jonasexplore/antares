@@ -1,4 +1,4 @@
-import { genre_type } from '@modules/user/entities/User';
+import { genre_type } from '@modules/user/domain/User';
 import { MemoryUserRepository } from '@modules/user/repositories';
 
 import { ListUser } from '.';

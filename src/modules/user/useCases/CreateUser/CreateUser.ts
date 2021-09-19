@@ -2,8 +2,8 @@ import { inject, injectable } from 'tsyringe';
 
 import { CityNotFound } from '@modules/city/errors';
 import { CITY, ICityRepository } from '@modules/city/repositories';
+import { User } from '@modules/user/domain';
 import { CreateUserDTO } from '@modules/user/dtos';
-import { User } from '@modules/user/entities';
 import { IUserRepository, USER } from '@modules/user/repositories';
 
 @injectable()

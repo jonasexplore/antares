@@ -1,5 +1,5 @@
+import { City } from '@modules/city/domain';
 import { CreateCityDTO } from '@modules/city/dtos';
-import { City } from '@modules/city/entities';
 
 import { ICityRepository } from '../ICityRepository';
 

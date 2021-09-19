@@ -1,6 +1,6 @@
+import { User } from '../domain';
 import { UpdateUserDTO } from '../dtos';
 import { CreateUserDTO } from '../dtos/CreateUser';
-import { User } from '../entities';
 
 interface IUserRepository {
   create(data: CreateUserDTO): Promise<User>;
