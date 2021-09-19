@@ -11,6 +11,7 @@ export default {
   }),
   preset: 'ts-jest',
   testEnvironment: 'node',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testMatch: ['**/*.spec.ts'],
   watchPathIgnorePatterns: ['node_modules'],
   transformIgnorePatterns: ['node_modules'],
