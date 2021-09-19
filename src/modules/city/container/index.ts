@@ -1,8 +1,10 @@
 import { container } from 'tsyringe';
 
-import { CITY, ICityRepository, MemoryCityRepository } from '../repositories';
+import { CitiesRepository } from '@infra/repositories';
+
+import { CITY, ICityRepository } from '../repositories';
 
 container.registerSingleton<ICityRepository>(
   CITY.CITY_REPOSITORY,
-  MemoryCityRepository,
+  CitiesRepository,
 );
