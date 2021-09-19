@@ -4,7 +4,7 @@ const userValidator = {
   BODY: {
     [Segments.BODY]: Joi.object().keys({
       name: Joi.string().required().max(255),
-      genre: Joi.string().required().valid('male', 'female'),
+      genre: Joi.string().required().valid('MALE', 'FEMALE'),
       birth_date: Joi.date().required(),
       city_id: Joi.string().uuid().required(),
     }),
