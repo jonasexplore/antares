@@ -1,8 +1,7 @@
 import request from 'supertest';
 
 import { prisma } from '@infra/database/prisma';
-
-import { app } from '../../../../infra/http/app';
+import { app } from '@infra/http/app';
 
 describe('User', () => {
   describe('DeleteUserController', () => {

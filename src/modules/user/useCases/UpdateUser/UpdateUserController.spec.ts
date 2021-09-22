@@ -1,18 +1,15 @@
 import request from 'supertest';
 
 import { prisma } from '@infra/database/prisma';
-
-import { app } from '../../../../infra/http/app';
+import { app } from '@infra/http/app';
 
 describe('User', () => {
   describe('UpdateUserController', () => {
     const mockUuid = '73da848c-398f-4bdf-a8fb-cf8477513849';
 
     afterAll(async () => {
-      const deleteUser = prisma.user.deleteMany();
-      const deleteCity = prisma.city.deleteMany();
-
-      await prisma.$transaction([deleteUser, deleteCity]);
+      await prisma.user.deleteMany();
+      await prisma.city.deleteMany();
 
       await prisma.$disconnect();
     });
