@@ -1,5 +1,6 @@
-import { HttpRequest } from '@core/.';
 import { Request, Response } from 'express';
+
+import { HttpRequest } from '@core/infra/HttpRequest';
 
 class ExpressAdapter {
   static create =
