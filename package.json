@@ -8,17 +8,19 @@
   "scripts": {
     "commit": "cz",
     "prepare": "husky install",
-    "dev": "tsnd -r tsconfig-paths/register --transpile-only --ignore-watch node_modules --respawn src/server.ts",
+    "dev": "prisma generate && dotenv -e .env.development -- yarn migrate:init && dotenv -e .env.development -- tsnd -r tsconfig-paths/register --transpile-only --ignore-watch node_modules --respawn src/infra/http/server.ts",
     "lint": "eslint src --ext .ts --fix",
     "format": "prettier --write src/**/*.ts",
     "build": "rimraf build; babel src --extensions \".js,.ts\" --out-dir build --copy-files --no-copy-ignored",
-    "test": "jest --runInBand",
-    "test:cov": "jest --no-cache --runInBand --coverage"
+    "test": "dotenv -e .env.test -- yarn migrate:init && dotenv -e .env.test jest --runInBand",
+    "test:cov": "dotenv -e .env.test -- yarn migrate:init && dotenv -e .env.test jest --no-cache --watchAll=false --coverage",
+    "migrate:init": "npx prisma migrate dev --name init"
   },
   "dependencies": {
     "@prisma/client": "^3.0.2",
     "celebrate": "^15.0.0",
     "dotenv": "^8.2.0",
+    "dotenv-cli": "^4.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "helmet": "^4.5.0",
@@ -66,6 +68,7 @@
     "eslint-plugin-import-helpers": "^1.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^27.2.0",
+    "jest-mock-extended": "^2.0.2-beta2",
     "lint-staged": "^11.0.0",
     "prettier": "^2.2.1",
     "prisma": "^3.0.2",
