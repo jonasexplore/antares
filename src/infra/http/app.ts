@@ -13,7 +13,7 @@ import { routes } from '@infra/http/routes';
 const app = express();
 
 app.use(express.json());
-app.use(morgan('dev'));
+app.use(morgan('dev', { skip: (req, res) => process.env.NODE_ENV === 'test' }));
 app.use(helmet());
 app.use('/api', routes);
 app.use(errors());
