@@ -1,8 +1,6 @@
 import { BaseEntity } from '@core/domain/BaseEntity';
 import { City } from '@modules/city/domain';
 
-import { CreateUserDTO } from '../dtos/CreateUser';
-
 enum genre_type {
   MALE = 'MALE',
   FEMALE = 'FEMALE',

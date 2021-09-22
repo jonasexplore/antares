@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import { User } from '@modules/user/domain';
-import { ListUserDTO } from '@modules/user/dtos/ListUser';
+import { ListUserDTO } from '@modules/user/dtos';
 import { IUserRepository, USER } from '@modules/user/repositories';
 
 @injectable()
