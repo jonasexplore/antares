@@ -21,7 +21,7 @@ class UsersRepository implements IUserRepository {
       data: persist,
     });
 
-    return user ? UserMapper.toDomain(user) : null;
+    return user ? UserMapper.toRender(user) : null;
   }
 
   async findById(id: string): Promise<User> {
@@ -31,13 +31,13 @@ class UsersRepository implements IUserRepository {
       },
     });
 
-    return user ? UserMapper.toDomain(user) : null;
+    return user ? UserMapper.toRender(user) : null;
   }
 
   async list(): Promise<User[]> {
     const users = await prisma.user.findMany();
 
-    return users.map(UserMapper.toDomain);
+    return users.map(UserMapper.toRender);
   }
 
   async listByName(name: string): Promise<User[]> {
@@ -49,7 +49,7 @@ class UsersRepository implements IUserRepository {
       },
     });
 
-    return users.map(UserMapper.toDomain);
+    return users.map(UserMapper.toRender);
   }
 
   async updateUser({ id, name }: UpdateUserDTO): Promise<void> {
