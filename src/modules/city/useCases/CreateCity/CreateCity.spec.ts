@@ -1,6 +1,7 @@
+import { validate } from 'uuid';
+
 import { CityAlreadyExists } from '@modules/city/errors';
 import { MemoryCityRepository } from '@modules/city/repositories';
-import { validate } from 'uuid';
 
 import { CreateCity } from '.';
 

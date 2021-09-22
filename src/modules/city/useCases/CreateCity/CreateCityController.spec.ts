@@ -1,9 +1,16 @@
 import request from 'supertest';
 
-import { app } from '../../../../app';
+import { prisma } from '@infra/database/prisma';
+
+import { app } from '../../../../infra/http/app';
 
 describe('City', () => {
   describe('CreateCityController', () => {
+    afterAll(async () => {
+      await prisma.city.deleteMany();
+      await prisma.$disconnect();
+    });
+
     it('should be able to create a new city', async () => {
       await request(app)
         .post('/api/cities')

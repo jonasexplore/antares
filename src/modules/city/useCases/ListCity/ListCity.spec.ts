@@ -34,6 +34,15 @@ describe('City', () => {
       expect(cities.length).toBe(1);
     });
 
-    it.todo('should be able to list all cities');
+    it('should be able to list all cities', async () => {
+      const city = await citiesRepository.create({
+        name: 'Crato',
+        state: 'CE',
+      });
+
+      const cities = await listCity.execute({ state: 'CE' });
+
+      expect(cities).toEqual([city]);
+    });
   });
 });
