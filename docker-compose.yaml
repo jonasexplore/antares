@@ -1,19 +1,31 @@
 version: '3.7'
 
 services:
+  db:
+    image: postgres
+    restart: always
+    container_name: app_db
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=compasso
+    volumes:
+      - pgdata:/data/postgres
+
   app:
     build: .
-    container_name: boilerplate-api
+    container_name: app_api
     restart: always
     ports:
-      - '${API_PORT_EXTERNAL}:${API_PORT}'
-    environment:
-      - API_PORT=${API_PORT}
-      - API_PORT_EXTERNAL=${API_PORT_EXTERNAL}
+      - '3333:3333'
     volumes:
-      - .:/usr/src/app
-    env_file:
-      - .env
+      - .:/usr/app
+    links:
+      - db
+    depends_on:
+      - db
 
 volumes:
   pgdata:
