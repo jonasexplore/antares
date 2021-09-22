@@ -62,7 +62,9 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/*.spec.js"]
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
       }
     ]
   },
