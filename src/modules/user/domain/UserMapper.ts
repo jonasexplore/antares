@@ -11,12 +11,23 @@ type PersistenceProps = {
   city_id: string;
 };
 
+interface IRenderProps extends User {
+  age: number;
+}
+
 class UserMapper {
   static toDomain(data: PersistenceUsers): User {
     return User.create({
       ...data,
       genre: genre_type[data.genre],
     });
+  }
+
+  static toRender(data: PersistenceUsers): IRenderProps {
+    return {
+      ...UserMapper.toDomain(data),
+      age: new Date().getFullYear() - data.birth_date.getFullYear(),
+    };
   }
 
   static toPersistence(user: User): PersistenceProps {
